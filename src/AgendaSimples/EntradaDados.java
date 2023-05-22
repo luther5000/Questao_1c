@@ -13,11 +13,10 @@ public class EntradaDados {
     public static String entraString (int a){
         if (a==0)
             System.out.println ("Insira o nome do aluno");
-        else
+        else if (a==1)
             System.out.println ("Insira o nome do pai");
 
-        String retorna = tc.nextLine();
-        return retorna;
+        return tc.nextLine();
     }
 
 

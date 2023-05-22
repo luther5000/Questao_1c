@@ -2,6 +2,8 @@ package AgendaSimples;
 
 import PessoaEscola.*;
 import javax.swing.JOptionPane;
+import java.util.Locale;
+
 public class AgendaSimples {
     public static void main(String[] args) {
 
@@ -17,7 +19,7 @@ public class AgendaSimples {
         //de sair do laço é usando a opção de sair
         do {
             System.out.println("\nO QUE DESEJA FAZER?\n1. Adicionar novo contato \n" +
-                    "2. Ver contatos existentes \n3. Sair");
+                    "2. Ver contatos existentes \n3. Pesquisar aluno \n4. Sair");
 
             /*note que em todas as entradas de dados é passado um valor int para a função, que nelas é armazenado pela
             variável 'a'. Esse valor inteiro tem como objetivo informar a função o que ela estará recebendo do usuário,
@@ -76,13 +78,50 @@ public class AgendaSimples {
                                         aluno[i].infoResponsavel());
                                 System.out.println("-------------------------------------------" +
                                         "--------------------------\n");
-                            break;
+                                break;
                             }
                     }
+
                 case "3":
+                    System.out.println("Você deseja pesquisar por nome ou por índice?\n1. Nome \n2. Índice");
+                    verifica = EntradaDados.entraString(6);
+                    if (verifica.equals ("1")) {
+                        pesquisaNome(contador, aluno);
+                        break;
+                    }
+                    else {
+                        pesquisaIndice(aluno, contador);
+                        break;
+                    }
+
+                    case "4":
                     EntradaDados.fechaScanner();
                     System.exit(0);
             }
         }while (true);
+    }
+
+    public static void pesquisaNome (int contador, Aluno[] aluno){
+        System.out.println("Qual o nome do aluno?");
+        String pesquisa = EntradaDados.entraString(6);
+        byte num=0;
+        for (int i = 0; i<contador; i++)
+            if (aluno[i].infoNome().equalsIgnoreCase(pesquisa)) {
+                System.out.println(aluno[i]);
+                num++;
+            }
+        if (num == 0)
+            System.out.println("Nenhum aluno correspondeu a pesquisa");
+    }
+
+    public static void pesquisaIndice (Aluno[] aluno, int contador) {
+        System.out.println("Insira o índice do aluno a ser pesquisado");
+        String indice = EntradaDados.entradaNumero(6);
+        if (Integer.parseInt(indice) > contador) {
+            System.out.println("Não há nenhum aluno salvo com esse índice");
+            return;
+        }
+        else
+            System.out.println(aluno[Integer.parseInt(indice)-1]);
     }
 }

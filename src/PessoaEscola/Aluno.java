@@ -18,6 +18,8 @@ public class Aluno extends PessoaEscola {
         return responsavel.toString();
     }
 
+    public String infoNome(){ return nome;}
+
     public String toString (){
         return ("Nome do Aluno: " +nome+ "\nMatrícula do Aluno: " +matricula+
                 "\nNúmero de Telefone do Aluno: " +numTelefone+ "\nEmail do Aluno: " +email);
