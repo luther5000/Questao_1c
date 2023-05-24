@@ -9,7 +9,7 @@ public class AgendaSimples {
 
         /*Criamos um vetor de objetos do tipo Aluno que iŕa armazenar todas as informações que precisamos. Também
         criamosmuma variável para contar o número de alunos que ja foram inseridos, lembrando que são apenas 10,
-        e por fim uma string que servira para verificar o que o usuário quer realizar no programa*/
+        e por fim uma string que servira para verificar o que o usuário quer realizar no programa */
         Aluno[] aluno = new Aluno[10];
         int contador = 0;
         String verifica;
